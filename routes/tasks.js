@@ -1,19 +1,44 @@
 const express = require("express");
 var router = express.Router();
-const { taskController } = require("../controller");
+const { TaskService } = require("../services");
 
 router.get("/getTask", async (req, res) => {
-  if (req.body.id) {
-    res.status(200).send(await taskController.getTask({ id: req.body.id }));
-  } else res.status(400).send("Bad Request: Task ID is not provided!");
+  const data = req.body;
+  try {
+    let result = await TaskService.getTask(data);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
 });
 
 router.post("/createTask", async (req, res) => {
+  const data = req.body;
   try {
-    let result = await taskController.createTask({ name: req.body.name });
+    let result = await TaskService.createTask(data);
     res.status(200).send(result);
-  } catch (err) {
-    res.status(400).send("Error while creating task:", err.message);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.put("/updateTask", async (req, res) => {
+  const data = req.body;
+  try {
+    let result = await TaskService.updateTask(data);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.delete("/deleteTask", async (req, res) => {
+  const data = req.body;
+  try {
+    let result = await TaskService.deleteTask(data);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(400).send(error.message);
   }
 });
 
