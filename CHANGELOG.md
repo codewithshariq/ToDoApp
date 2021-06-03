@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.1.0...v1.2.0) (2021-06-03)
+
+
+### Features
+
+* layers added in architecture ([1e8a1bf](https://github.com/shariq-carbonteq/ToDoApp/commit/1e8a1bf9b70a08e271a295098502b189e10fca46))
+
 ## 1.1.0 (2021-06-03)
 
 
