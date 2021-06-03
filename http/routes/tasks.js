@@ -1,6 +1,6 @@
 const express = require("express");
 var router = express.Router();
-const { TaskService } = require("../services");
+const { TaskService } = require("../../services");
 
 router.get("/getTask", async (req, res) => {
   const data = req.body;

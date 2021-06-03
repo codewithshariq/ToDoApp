@@ -1,8 +1,16 @@
-const { mongoTaskModel, sqlTaskModel } = require("../models");
+const { mongoTaskModel, sqlTaskModel } = require("../infrastructure/database");
 
 const TaskService = function () {
-  const getTask = async ({ id }) => {
-    return await mongoTaskModel.findById(id).exec();
+  const getTask = async ({ id, database }) => {
+    if (database == "mongo") {
+      return await mongoTaskModel.findById(id).exec();
+    } else {
+      return await sqlTaskModel.findAll({
+        where: {
+          taskId: id,
+        },
+      });
+    }
   };
 
   const createTask = async ({ name, database }) => {
@@ -16,14 +24,25 @@ const TaskService = function () {
     }
   };
 
-  const updateTask = async ({ id, name, completed }) => {
-    let task = await mongoTaskModel.findById(id).exec();
-    if (task) {
-      task.name = name;
-      task.completed = completed;
-      return await task.save();
+  const updateTask = async ({ id, name, completed, database }) => {
+    if (database == "mongo") {
+      let task = await mongoTaskModel.findById(id).exec();
+      if (task) {
+        task.name = name;
+        task.completed = completed;
+        return await task.save();
+      } else {
+        throw new Error("Task with the given ID does not exist");
+      }
     } else {
-      throw new Error("Task with the given ID does not exist");
+      return await sqlTaskModel.update(
+        { name, completed },
+        {
+          where: {
+            taskId: id,
+          },
+        }
+      );
     }
   };
 
