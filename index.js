@@ -8,6 +8,6 @@ const app = require("./http/app");
 mongo.connectToDb();
 
 //Initialize connection to MYSQl database
-sql.sequelize.sync();
+// sql.sequelize.sync();
 
 app.listen(config.port);

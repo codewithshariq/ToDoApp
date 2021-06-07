@@ -1,6 +1,6 @@
 const taskModel = require("../models/task");
 
-class TaskRepository {
+class TaskRepo {
   static async getTask({ id }) {
     return await taskModel.findById(id).exec();
   }
@@ -25,4 +25,4 @@ class TaskRepository {
   }
 }
 
-module.exports = TaskRepository;
+module.exports = TaskRepo;

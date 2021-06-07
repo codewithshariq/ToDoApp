@@ -10,7 +10,7 @@ class TaskService {
     return this.taskRepo.createTask(data);
   }
   updateTask(data) {
-    return await this.taskRepo.updateTask(data);
+    return this.taskRepo.updateTask(data);
   }
   deleteTask(data) {
     return this.taskRepo.deleteTask(data);
