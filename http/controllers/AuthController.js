@@ -1,7 +1,7 @@
 const { db } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
-const { UserService } = require("../../services");
-const googleApi = require("../../infra/auth/google-util");
+const { UserService } = require("../../application");
+const googleApi = require("../../infra/services/google-util");
 
 class AuthController {
   static userRepo = UserFactory.getRepo(db);
