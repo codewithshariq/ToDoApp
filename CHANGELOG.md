@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.2.3...v1.3.0) (2021-06-08)
+
+
+### Features
+
+* User and Task entities added ([8c12194](https://github.com/shariq-carbonteq/ToDoApp/commit/8c121942d17dcf430608a03dfba1f1b7ccf6823a))
+
 ### [1.2.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.2.2...v1.2.3) (2021-06-08)
 
 ### [1.2.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.2.1...v1.2.2) (2021-06-07)
