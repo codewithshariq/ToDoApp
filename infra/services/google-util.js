@@ -27,7 +27,7 @@ class GoogleApi {
     return google.people({ version: "v1", auth });
   }
 
-  getGoogleAccountFromCode(code) {
+  async getGoogleAccountFromCode(code) {
     const data = await this.auth.getToken(code);
     const tokens = data.tokens;
     auth.setCredentials(tokens);
