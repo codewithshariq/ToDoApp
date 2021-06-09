@@ -4,10 +4,13 @@ const { UserService } = require("../../application");
 const GoogleApi = require("../../infra/services/google-util");
 
 class AuthController {
-  static userRepo = UserFactory.getRepo(db);
-  static userService = new UserService(this.userRepo);
+  constructor() {
+    this.userRepo = UserFactory.getRepo(db);
+    this.userService = new UserService(this.userRepo);
+    this.authApi = new GoogleApi();
+  }
 
-  static async getUser(req, res) {
+  async getUser(req, res) {
     const data = req.body;
     try {
       let result = await this.userService.getUser(data);
@@ -17,11 +20,10 @@ class AuthController {
     }
   }
 
-  static async createUser(req, res) {
+  async createUser(req, res) {
     const code = req.query.code;
     try {
-      let authApi = new GoogleApi();
-      let data = await authApi.getGoogleAccountFromCode(code);
+      let data = await this.authApi.getGoogleAccountFromCode(code);
       let result = await this.userService.createUser(data);
       res.status(200).send(result);
     } catch (error) {
@@ -29,7 +31,7 @@ class AuthController {
     }
   }
 
-  static async updateUser(req, res) {
+  async updateUser(req, res) {
     const data = req.body;
     try {
       let result = await this.userService.updateUser(data);
@@ -39,7 +41,7 @@ class AuthController {
     }
   }
 
-  static async deleteUser(req, res) {
+  async deleteUser(req, res) {
     const data = req.body;
     try {
       let result = await this.userService.deleteUser(data);
@@ -49,8 +51,8 @@ class AuthController {
     }
   }
 
-  static generateUrl(req, res) {
-    res.status(200).send(googleApi.urlGoogle());
+  generateUrl(req, res) {
+    res.status(200).send(this.authApi.urlGoogle());
   }
 }
 
