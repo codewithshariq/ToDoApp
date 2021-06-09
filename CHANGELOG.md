@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.3.0...v1.4.0) (2021-06-09)
+
+
+### Features
+
+* refactored task api to send and receive entities ([9514ca0](https://github.com/shariq-carbonteq/ToDoApp/commit/9514ca09b991e68ec6721c88f109814fdda1eb14))
+
 ## [1.3.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.2.3...v1.3.0) (2021-06-08)
 
 
