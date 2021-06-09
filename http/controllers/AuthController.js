@@ -1,7 +1,7 @@
 const { db } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
 const { UserService } = require("../../application");
-const googleApi = require("../../infra/services/google-util");
+const GoogleApi = require("../../infra/services/google-util");
 
 class AuthController {
   static userRepo = UserFactory.getRepo(db);
@@ -20,7 +20,8 @@ class AuthController {
   static async createUser(req, res) {
     const code = req.query.code;
     try {
-      let data = await googleApi.getGoogleAccountFromCode(code);
+      let authApi = new GoogleApi();
+      let data = await authApi.getGoogleAccountFromCode(code);
       let result = await this.userService.createUser(data);
       res.status(200).send(result);
     } catch (error) {

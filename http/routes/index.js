@@ -1,5 +1,5 @@
 const taskRouter = require("./tasks");
-const authRouter = require("./googleAuth");
+const authRouter = require("./auth");
 
 module.exports = {
   taskRouter,
