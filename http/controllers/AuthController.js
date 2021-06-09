@@ -1,7 +1,7 @@
 const { db } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
 const { UserService } = require("../../application");
-const GoogleApi = require("../../infra/services/google-util");
+const GoogleApi = require("../../infra/services/GoogleApi");
 
 class AuthController {
   constructor() {
