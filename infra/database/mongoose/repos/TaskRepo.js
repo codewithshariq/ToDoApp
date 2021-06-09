@@ -1,21 +1,30 @@
 const taskModel = require("../models/task");
 
 class TaskRepo {
-  static async getTask({ id }) {
-    return await taskModel.findById(id).exec();
-  }
-  static async createTask({ name }) {
-    return await taskModel.create({ name });
-  }
-  static async updateTask({ id, name, completed }) {
+  async getTask(id) {
     let task = await taskModel.findById(id).exec();
     if (task) {
-      task.name = name;
-      task.completed = completed;
-      return await task.save();
+      return task;
+    } else {
+      throw new Error("Task with the given ID does not exist");
     }
   }
-  static async deleteTask({ id }) {
+
+  async createTask({ name, id, userId }) {
+    return await taskModel.create({ name, _id: id, userId });
+  }
+
+  async updateTask(id, completed) {
+    let task = await taskModel.findById(id).exec();
+    if (task) {
+      task.completed = completed;
+      return task.save();
+    } else {
+      throw new Error("Task with the given ID does not exist");
+    }
+  }
+
+  async deleteTask(id) {
     let task = await taskModel.findByIdAndDelete(id).exec();
     if (task) {
       return task;

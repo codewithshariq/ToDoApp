@@ -1,4 +1,4 @@
-const TaskEntity = require("../domain/TaskEntity");
+const Task = require("../domain/Task");
 const { v4: uuidv4 } = require("uuid");
 
 class TaskService {
@@ -6,19 +6,34 @@ class TaskService {
     this.taskRepo = taskRepo;
   }
 
-  getTask(data) {
-    return this.taskRepo.getTask(data);
+  async getTask(id) {
+    let task = await this.taskRepo.getTask(id);
+    let { name, _id: taskId, userId, completed: taskStatus } = task;
+    task = Task.create(name, taskId, userId, taskStatus);
+    return task;
   }
-  createTask(data) {
-    let { name } = data;
-    let task = TaskEntity.factoryMethod(name, false, uuidv4());
-    return this.taskRepo.createTask(task);
+
+  async createTask(name, userId) {
+    let task = Task.create(name, uuidv4(), userId);
+    await this.taskRepo.createTask(task);
+    return task;
   }
-  updateTask(data) {
-    return this.taskRepo.updateTask(data);
+
+  async updateTask({ id, completed }) {
+    let {
+      name,
+      _id: taskId,
+      userId,
+      completed: taskStatus,
+    } = await this.taskRepo.updateTask(id, completed);
+    return Task.create(name, taskId, userId, taskStatus);
   }
-  deleteTask(data) {
-    return this.taskRepo.deleteTask(data);
+
+  async deleteTask(id) {
+    let task = await this.taskRepo.deleteTask(id);
+    let { name, _id: taskId, userId, completed: taskStatus } = task;
+    task = Task.create(name, taskId, userId, taskStatus);
+    return task;
   }
 }
 

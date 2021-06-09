@@ -1,45 +1,47 @@
 const { db } = require("../../config");
 const TaskFactory = require("../../infra/database/factories/TaskFactory");
-const { TaskService } = require("../../services");
+const { TaskService } = require("../../application");
 
 class TaskController {
-  static taskRepo = TaskFactory.getRepo(db);
-  static taskService = new TaskService(this.taskRepo);
+  constructor() {
+    this.taskRepo = TaskFactory.getRepo(db);
+    this.taskService = new TaskService(this.taskRepo);
+  }
 
-  static async getTask(req, res) {
-    const data = req.body;
+  async getTask(req, res) {
+    const { id } = req.body;
     try {
-      let result = await this.taskService.getTask(data);
+      let result = await this.taskService.getTask(id);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);
     }
   }
 
-  static async createTask(req, res) {
-    const data = req.body;
+  async createTask(req, res) {
+    const { name, userId } = req.body;
     try {
-      let result = await this.taskService.createTask(data);
+      let result = await this.taskService.createTask(name, userId);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);
     }
   }
 
-  static async updateTask(req, res) {
-    const data = req.body;
+  async updateTask(req, res) {
+    const { task } = req.body;
     try {
-      let result = await this.taskService.updateTask(data);
+      let result = await this.taskService.updateTask(task);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);
     }
   }
 
-  static async deleteTask(req, res) {
-    const data = req.body;
+  async deleteTask(req, res) {
+    const { id } = req.body;
     try {
-      let result = await this.taskService.deleteTask(data);
+      let result = await this.taskService.deleteTask(id);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);

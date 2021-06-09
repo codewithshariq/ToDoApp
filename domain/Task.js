@@ -3,7 +3,6 @@ class Task {
     this.id = id;
     this.name = name;
     this.completed = completed;
-    this.description = description;
     this.userId = userId;
   }
 
@@ -11,11 +10,7 @@ class Task {
     this.completed = completed;
   }
 
-  changeDescription(description) {
-    this.description = description;
-  }
-
-  static create(name, completed, id, userId) {
+  static create(name, id, userId, completed = false) {
     return new Task(name, completed, id, userId);
   }
 }
