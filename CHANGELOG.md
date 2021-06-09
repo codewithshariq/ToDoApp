@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.4.1...v1.4.2) (2021-06-09)
+
+
+### Bug Fixes
+
+* renamed googleAuth to auth ([2f5d985](https://github.com/shariq-carbonteq/ToDoApp/commit/2f5d985bbe27f825b078cc84a8fa053c4c49775c))
+
 ### [1.4.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.4.0...v1.4.1) (2021-06-09)
 
 
