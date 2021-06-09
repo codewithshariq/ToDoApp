@@ -2,20 +2,15 @@ const { google } = require("googleapis");
 const googleConfig = require("../../config/google-api");
 
 class GoogleApi {
-  static createConnection() {
-    return new google.auth.OAuth2(
+  constructor() {
+    this.auth = new google.auth.OAuth2(
       googleConfig.CLIENT_ID,
       googleConfig.CLIENT_SECRET,
       googleConfig.AUTH_REDIRECT
     );
   }
 
-  static defaultScope = [
-    "https://www.googleapis.com/auth/plus.me",
-    "https://www.googleapis.com/auth/userinfo.email",
-  ];
-
-  static getConnectionUrl(auth) {
+  getConnectionUrl(auth) {
     return auth.generateAuthUrl({
       access_type: "offline",
       prompt: "consent", // access type and approval prompt will force a new refresh token to be made each time signs in
@@ -23,23 +18,21 @@ class GoogleApi {
     });
   }
 
-  static urlGoogle() {
-    const auth = this.createConnection(); // this is from previous step
-    const url = this.getConnectionUrl(auth);
+  urlGoogle() {
+    const url = this.getConnectionUrl(this.auth);
     return url;
   }
 
-  static getGooglePeopleApi(auth) {
+  getGooglePeopleApi(auth) {
     return google.people({ version: "v1", auth });
   }
 
-  static async getGoogleAccountFromCode(code) {
-    const auth = this.createConnection();
-    const data = await auth.getToken(code);
+  getGoogleAccountFromCode(code) {
+    const data = await this.auth.getToken(code);
     const tokens = data.tokens;
     auth.setCredentials(tokens);
 
-    const peopleApi = this.getGooglePeopleApi(auth);
+    const peopleApi = this.getGooglePeopleApi(this.auth);
     const me = await peopleApi.people.get({
       resourceName: "people/me",
       personFields: ["emailAddresses", "names"],
@@ -55,7 +48,6 @@ class GoogleApi {
     return {
       name: name,
       email: userGoogleEmail,
-      //   tokens: tokens,
     };
   }
 }
