@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.4.0...v1.4.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* removed updateStatus mmethod form Task entity ([8751de6](https://github.com/shariq-carbonteq/ToDoApp/commit/8751de67007387509b6da4672f3a935dece4894e))
+
 ## [1.4.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.3.0...v1.4.0) (2021-06-09)
 
 
