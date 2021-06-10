@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.6.0...v1.6.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* fixed sequelize export to define models ([2388b26](https://github.com/shariq-carbonteq/ToDoApp/commit/2388b268c4b290752143b15d590ffed1b2a02e8e))
+
 ## [1.6.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.14...v1.6.0) (2021-06-10)
 
 
