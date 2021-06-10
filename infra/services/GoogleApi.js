@@ -30,7 +30,7 @@ class GoogleApi {
   async getGoogleAccountFromCode(code) {
     const data = await this.auth.getToken(code);
     const tokens = data.tokens;
-    auth.setCredentials(tokens);
+    this.auth.setCredentials(tokens);
 
     const peopleApi = this.getGooglePeopleApi(this.auth);
     const me = await peopleApi.people.get({
