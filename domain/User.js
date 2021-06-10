@@ -1,12 +1,12 @@
 class User {
-  constructor(name, id, email) {
+  constructor(id, name, email) {
     this.id = id;
     this.name = name;
     this.email = email;
   }
 
   static create(id, name, email) {
-    return new Task(id, name, email);
+    return new User(id, name, email);
   }
 }
 

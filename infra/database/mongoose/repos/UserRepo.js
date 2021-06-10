@@ -33,6 +33,8 @@ class UserRepo {
     if (user) {
       user.name = name;
       return await user.save();
+    } else {
+      throw new Error("User with the given ID does not exist");
     }
   }
   async deleteUser(id) {
