@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.14...v1.6.0) (2021-06-10)
+
+
+### Features
+
+* user crud added ([a5830ec](https://github.com/shariq-carbonteq/ToDoApp/commit/a5830ec8e4a85544db9f8b6acc31673980d3fede))
+
 ### [1.5.14](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.13...v1.5.14) (2021-06-10)
 
 ### [1.5.13](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.12...v1.5.13) (2021-06-10)
