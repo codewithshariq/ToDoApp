@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.5](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.4...v1.5.5) (2021-06-10)
+
+
+### Bug Fixes
+
+* moved user logic to UserController form AuthController ([fd5be7e](https://github.com/shariq-carbonteq/ToDoApp/commit/fd5be7e9a754105a6bc995bc01fd556f7f7be8fa))
+
 ### [1.5.4](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.3...v1.5.4) (2021-06-10)
 
 
