@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.0...v1.5.1) (2021-06-10)
+
+
+### Bug Fixes
+
+* added users ref in mongoose model ([c27a89e](https://github.com/shariq-carbonteq/ToDoApp/commit/c27a89e11ab04c8461575166c50c9a9d2363a07b))
+
 ## [1.5.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.4.10...v1.5.0) (2021-06-09)
 
 ### [1.4.10](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.4.9...v1.4.10) (2021-06-09)
