@@ -17,8 +17,8 @@ const taskSchema = new Schema({
   },
   userId: {
     type: String,
-    required: true,
+    ref: "users",
   },
 });
 
-module.exports = mongoose.model("Tasks", taskSchema);
+module.exports = mongoose.model("tasks", taskSchema);
