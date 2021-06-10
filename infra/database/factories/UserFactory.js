@@ -1,13 +1,14 @@
+const MongoUserRepo = require("../mongoose/repos/UserRepo");
+const SqlUserRepo = require("../sequelize/repos/TaskRepo");
+
 class UserFactory {
   static getRepo(db) {
     switch (db) {
       case "MONGO": {
-        let userRepo = require("../mongoose/repos/UserRepo");
-        return userRepo;
+        return new MongoUserRepo();
       }
       case "SQL": {
-        let userRepo = require("../sequelize/repos/UserRepo");
-        return userRepo;
+        return new SqlUserRepo();
       }
     }
   }
