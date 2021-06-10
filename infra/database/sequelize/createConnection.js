@@ -7,6 +7,4 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   operatorsAliases: 0,
 });
 
-module.exports = {
-  sequelize,
-};
+module.exports = sequelize;
