@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.1...v1.5.2) (2021-06-10)
+
+
+### Bug Fixes
+
+* fixed the issue related to auth ([76aeda1](https://github.com/shariq-carbonteq/ToDoApp/commit/76aeda1f1365ed740527dfe155bfc0dc5db09d4a))
+
 ### [1.5.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.0...v1.5.1) (2021-06-10)
 
 
