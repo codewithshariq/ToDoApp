@@ -12,10 +12,10 @@ class UserController {
     this.tokenService = new TokenService();
   }
 
-  async getUser(req, res) {
-    const data = req.body;
+  async createUser(req, res) {
+    const { name, email } = req.body;
     try {
-      let result = await this.userService.getUser(data);
+      let result = await this.userService.createUser(name, email);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);
@@ -23,9 +23,9 @@ class UserController {
   }
 
   async updateUser(req, res) {
-    const data = req.body;
+    const { id, name } = req.body;
     try {
-      let result = await this.userService.updateUser(data);
+      let result = await this.userService.updateUser(id, name);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);
@@ -33,9 +33,9 @@ class UserController {
   }
 
   async deleteUser(req, res) {
-    const data = req.body;
+    const { id } = req.body;
     try {
-      let result = await this.userService.deleteUser(data);
+      let result = await this.userService.deleteUser(id);
       res.status(200).send(result);
     } catch (error) {
       res.status(400).send(error.message);

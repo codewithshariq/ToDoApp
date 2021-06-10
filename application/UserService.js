@@ -1,3 +1,6 @@
+const User = require("../domain/User");
+const { v4: uuidv4 } = require("uuid");
+
 class UserService {
   constructor(userRepo) {
     this.userRepo = userRepo;
@@ -9,14 +12,22 @@ class UserService {
   getUserById(id) {
     return this.userRepo.getUserByEmail(id);
   }
-  createUser(name, email) {
-    return this.userRepo.createUser(name, email);
+  async createUser(name, email) {
+    let user = User.create(uuidv4(), name, email);
+    await this.userRepo.createUser(user.id, user.name, user.email);
+    return user;
   }
-  updateUser(data) {
-    return this.userRepo.updateUser(data);
+  async updateUser(id, name) {
+    let {
+      name: userName,
+      _id: userId,
+      email,
+    } = await this.userRepo.updateUser(id, name);
+    return User.create(userId, userName, email);
   }
-  deleteUser(data) {
-    return this.userRepo.deleteUser(data);
+  async deleteUser(id) {
+    let user = await this.userRepo.deleteUser(id);
+    return User.create(user._id, user.name, user.email);
   }
 }
 

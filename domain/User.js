@@ -5,8 +5,8 @@ class User {
     this.email = email;
   }
 
-  static create(name, completed, id, userId) {
-    return new Task(name, completed, id, userId);
+  static create(id, name, email) {
+    return new Task(id, name, email);
   }
 }
 
