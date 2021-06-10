@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.2...v1.5.3) (2021-06-10)
+
+
+### Bug Fixes
+
+* set email attribute of a user to be unique ([b13653c](https://github.com/shariq-carbonteq/ToDoApp/commit/b13653ce6e7a0af87207aa8f1dfee6178eea1e21))
+
 ### [1.5.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.1...v1.5.2) (2021-06-10)
 
 
