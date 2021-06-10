@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.9](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.8...v1.5.9) (2021-06-10)
+
+
+### Bug Fixes
+
+* fixed imports ([0cb344a](https://github.com/shariq-carbonteq/ToDoApp/commit/0cb344a7c78295bf1374f3be1c99f70e5989619f))
+
 ### [1.5.8](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.5.7...v1.5.8) (2021-06-10)
 
 
