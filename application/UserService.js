@@ -3,11 +3,14 @@ class UserService {
     this.userRepo = userRepo;
   }
 
-  getUser(data) {
-    return this.userRepo.getUser(data);
+  getUserByEmail(email) {
+    return this.userRepo.getUserByEmail(email);
   }
-  createUser(data) {
-    return this.userRepo.createUser(data);
+  getUserById(id) {
+    return this.userRepo.getUserByEmail(id);
+  }
+  createUser(name, email) {
+    return this.userRepo.createUser(name, email);
   }
   updateUser(data) {
     return this.userRepo.updateUser(data);
