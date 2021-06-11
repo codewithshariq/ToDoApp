@@ -5,7 +5,6 @@ const PaginationService = require("./Pagination");
 class TaskService {
   constructor(taskRepo) {
     this.taskRepo = taskRepo;
-    this.paginationService = new PaginationService();
   }
 
   async getTask(id) {
@@ -17,7 +16,8 @@ class TaskService {
 
   async getTasks(userId, page, limit) {
     let tasks = await this.taskRepo.getTasks(userId);
-    tasks = this.paginationService.paginate(tasks, page, limit);
+    const paginationService = new PaginationService(page, limit);
+    tasks = paginationService.paginate(tasks);
     return tasks;
   }
 

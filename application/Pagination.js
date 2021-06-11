@@ -1,15 +1,17 @@
+const PaginationOptions = require("./PaginationOptions");
+
 class Pagination {
-  paginationOptions(page, limit) {
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    return {
-      startIndex,
-      endIndex,
-    };
+  constructor(page, limit) {
+    this.paginationOptions = new PaginationOptions(page, limit);
   }
-  async paginate(data, page, limit) {
-    const { startIndex, endIndex } = this.paginationOptions(page, limit);
-    return data.slice(startIndex, endIndex);
+  paginate(data) {
+    let offset = this.paginationOptions.getOffset();
+    let limit = this.paginationOptions.getLimit();
+    return {
+      paginatedCollections: data.slice(offset, limit),
+      offset: offset,
+      limit: limit,
+    };
   }
 }
 
