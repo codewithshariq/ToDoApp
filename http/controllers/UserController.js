@@ -1,15 +1,13 @@
 const { db } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
 const { UserService } = require("../../application");
-const GoogleApi = require("../../infra/services/GoogleApi");
-const TokenService = require("../../infra/services/Token");
+const GoogleAuthService = require("../../infra/services/GoogleAuthService");
 
 class UserController {
   constructor() {
     this.userRepo = UserFactory.getRepo(db);
     this.userService = new UserService(this.userRepo);
-    this.authApi = new GoogleApi();
-    this.tokenService = new TokenService();
+    this.authApi = new GoogleAuthService();
   }
 
   async createUser(req, res) {

@@ -1,7 +1,7 @@
 const { google } = require("googleapis");
 const googleConfig = require("../../config/google-api");
 
-class GoogleApi {
+class GoogleAuthService {
   constructor() {
     this.auth = new google.auth.OAuth2(
       googleConfig.CLIENT_ID,
@@ -52,4 +52,4 @@ class GoogleApi {
   }
 }
 
-module.exports = GoogleApi;
+module.exports = GoogleAuthService;

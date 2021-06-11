@@ -1,25 +1,26 @@
 const { db } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
 const { UserService } = require("../../application");
-const GoogleApi = require("../../infra/services/GoogleApi");
-const TokenService = require("../../infra/services/Token");
+const GoogleAuthService = require("../../infra/services/GoogleAuthService");
+const AuthService = require("../../infra/services/AuthService");
 
 class AuthController {
   constructor() {
     this.userRepo = UserFactory.getRepo(db);
     this.userService = new UserService(this.userRepo);
-    this.authApi = new GoogleApi();
-    this.tokenService = new TokenService();
+    this.googleAuthService = new GoogleAuthService();
+    this.authService = new AuthService();
   }
 
   generateUrl(req, res) {
-    res.status(200).send(this.authApi.urlGoogle());
+    res.status(200).send(this.googleAuthService.urlGoogle());
   }
 
   async googleAuth(req, res) {
     const code = req.query.code;
     try {
-      let { name, email } = await this.authApi.getGoogleAccountFromCode(code);
+      let { name, email } =
+        await this.googleAuthService.getGoogleAccountFromCode(code);
 
       try {
         let {
@@ -27,7 +28,7 @@ class AuthController {
           name: userName,
           email: userEmail,
         } = await this.userService.getUserByEmail(email);
-        let accessToken = this.tokenService.createToken(
+        let accessToken = this.authService.createToken(
           userId,
           userName,
           userEmail
@@ -52,7 +53,7 @@ class AuthController {
         name: userName,
         email: userEmail,
       } = await this.userService.getUserByEmail(email);
-      let accessToken = this.tokenService.createToken(
+      let accessToken = this.authService.createToken(
         userId,
         userName,
         userEmail
