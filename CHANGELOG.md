@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.4](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.3...v1.7.4) (2021-06-11)
+
+
+### Bug Fixes
+
+* refactord Task Repo for sequelize ([ce20150](https://github.com/shariq-carbonteq/ToDoApp/commit/ce201504e8c8b2817a261ac53c047bd649828caf))
+
 ### [1.7.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.2...v1.7.3) (2021-06-11)
 
 
