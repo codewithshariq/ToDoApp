@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.5](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.4...v1.7.5) (2021-06-11)
+
+
+### Bug Fixes
+
+* added user model reference in task model ([df2408c](https://github.com/shariq-carbonteq/ToDoApp/commit/df2408c0fcf672f042ed0ce8e03e77a22c57bd19))
+
 ### [1.7.4](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.3...v1.7.4) (2021-06-11)
 
 
