@@ -1,9 +1,11 @@
 const Task = require("../domain/Task");
 const { v4: uuidv4 } = require("uuid");
+const PaginationService = require("./Pagination");
 
 class TaskService {
   constructor(taskRepo) {
     this.taskRepo = taskRepo;
+    this.paginationService = new PaginationService();
   }
 
   async getTask(id) {
@@ -14,20 +16,8 @@ class TaskService {
   }
 
   async getTasks(userId, page, limit) {
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    let tasks = await this.taskRepo.getTasks(
-      userId,
-      page,
-      limit,
-      startIndex,
-      endIndex
-    );
-    tasks = tasks.map((task) => {
-      let { name, _id: taskId, userId, completed: taskStatus } = task;
-      task = Task.create(name, taskId, userId, taskStatus);
-      return task;
-    });
+    let tasks = await this.taskRepo.getTasks(userId);
+    tasks = this.paginationService.paginate(tasks, page, limit);
     return tasks;
   }
 

@@ -10,26 +10,8 @@ class TaskRepo {
     }
   }
 
-  async getTasks(userId, page, limit, startIndex, endIndex) {
-    const result = {};
-    if (
-      endIndex < (await taskModel.countDocuments({ userId: userId }).exec())
-    ) {
-      result.next = {
-        page: page + 1,
-        limit: limit,
-      };
-    }
-    if (startIndex > 0) {
-      result.previous = {
-        page: page - 1,
-        limit: limit,
-      };
-    }
-    return (result.results = await taskModel
-      .find({ userId: userId })
-      .limit(limit)
-      .skip(startIndex));
+  async getTasks(userId) {
+    return await taskModel.find({ userId: userId });
   }
 
   async createTask({ name, id, userId }) {
