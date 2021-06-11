@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.5...v1.9.0) (2021-06-11)
+
+
+### Features
+
+* pagination addded for user's tasks. ([49819c0](https://github.com/shariq-carbonteq/ToDoApp/commit/49819c065d966f9ffade92175765d5a0bc11c7ba))
+
+
+### Bug Fixes
+
+* created a seperate service for pagination. ([864c5ac](https://github.com/shariq-carbonteq/ToDoApp/commit/864c5acf229f35b27633e8b3903efa42b36431b2))
+
 ## [1.8.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.5...v1.8.0) (2021-06-11)
 
 
