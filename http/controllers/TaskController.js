@@ -18,6 +18,20 @@ class TaskController {
     }
   }
 
+  async getTasks(req, res) {
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const {
+      userDetails: { userId },
+    } = req.body;
+    try {
+      let result = await this.taskService.getTasks(userId, page, limit);
+      res.status(200).send({ paginatedData: result, page, limit });
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  }
+
   async createTask(req, res) {
     const {
       name,

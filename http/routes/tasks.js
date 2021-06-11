@@ -7,6 +7,10 @@ router.get("/getTask", (req, res) => {
   taskController.getTask(req, res);
 });
 
+router.get("/getTasks", (req, res) => {
+  taskController.getTasks(req, res);
+});
+
 router.post("/createTask", (req, res) => {
   taskController.createTask(req, res);
 });

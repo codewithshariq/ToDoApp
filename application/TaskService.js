@@ -13,6 +13,24 @@ class TaskService {
     return task;
   }
 
+  async getTasks(userId, page, limit) {
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    let tasks = await this.taskRepo.getTasks(
+      userId,
+      page,
+      limit,
+      startIndex,
+      endIndex
+    );
+    tasks = tasks.map((task) => {
+      let { name, _id: taskId, userId, completed: taskStatus } = task;
+      task = Task.create(name, taskId, userId, taskStatus);
+      return task;
+    });
+    return tasks;
+  }
+
   async createTask(name, userId) {
     let task = Task.create(name, uuidv4(), userId);
     await this.taskRepo.createTask(task);
