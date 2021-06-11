@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.1...v1.7.2) (2021-06-11)
+
+
+### Bug Fixes
+
+* moved jwt verification logic to service from middleware ([d1be22a](https://github.com/shariq-carbonteq/ToDoApp/commit/d1be22a169d725a8fcb7b81841e69c4301f6cf9e))
+
 ### [1.7.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.0...v1.7.1) (2021-06-11)
 
 ## [1.7.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.6.1...v1.7.0) (2021-06-10)
