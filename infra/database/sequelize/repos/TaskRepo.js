@@ -14,8 +14,38 @@ class TaskRepository {
     }
   }
 
+  async getTasks(userId, page, limit, startIndex, endIndex) {
+    const result = {};
+    if (
+      endIndex <
+      (await taskModel.count({
+        where: {
+          userId: userId,
+        },
+      }))
+    ) {
+      result.next = {
+        page: page + 1,
+        limit: limit,
+      };
+    }
+    if (startIndex > 0) {
+      result.previous = {
+        page: page - 1,
+        limit: limit,
+      };
+    }
+    return (result.results = await taskModel.findAll({
+      where: {
+        userId: userId,
+      },
+      order: [["createdAt", "ASC"]],
+      offset: startIndex,
+      limit: limit,
+    }));
+  }
+
   async createTask({ name, id, userId }) {
-    //userId will be addded as foreign key
     let task = await taskModel.create({
       name,
       _id: id,
