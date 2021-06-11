@@ -19,8 +19,8 @@ class TaskController {
   }
 
   async getTasks(req, res) {
-    const page = parseInt(req.query.page);
-    const limit = parseInt(req.query.limit);
+    const page = req.query.page ? req.query.page : 1;
+    const limit = req.query.limit ? req.query.limit : 10;
     const {
       userDetails: { userId },
     } = req.body;
