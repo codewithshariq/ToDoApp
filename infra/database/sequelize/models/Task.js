@@ -20,6 +20,10 @@ Task.init(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: User,
+        key: "_id",
+      },
     },
   },
   { sequelize, modelName: "Task" }
