@@ -1,5 +1,5 @@
 const MongoUserRepo = require("../mongoose/repos/UserRepo");
-const SqlUserRepo = require("../sequelize/repos/TaskRepo");
+const SqlUserRepo = require("../sequelize/repos/UserRepo");
 
 class UserFactory {
   static getRepo(db) {

@@ -11,13 +11,15 @@ User.init(
       unique: true,
       allowNull: false,
     },
-    id: {
+    _id: {
       type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
     },
   },
-  { sequelize, modelName: "users" }
+  { sequelize, modelName: "User" }
 );
+
+User.sync();
 
 module.exports = sequelize.models.User;

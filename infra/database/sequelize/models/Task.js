@@ -11,13 +11,15 @@ Task.init(
       defaultValue: false,
       allowNull: false,
     },
-    id: {
+    _id: {
       type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
     },
   },
-  { sequelize, modelName: "tasks" }
+  { sequelize, modelName: "Task" }
 );
+
+Task.sync();
 
 module.exports = sequelize.models.Task;

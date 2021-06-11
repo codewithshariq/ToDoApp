@@ -19,7 +19,7 @@ class UserRepo {
   async getUserById(id) {
     let user = await userModel.findOne({
       where: {
-        id: id,
+        _id: id,
       },
     });
     if (user) {
@@ -38,28 +38,38 @@ class UserRepo {
     if (user) {
       throw new Error("User already registered");
     } else {
-      return await userModel.create({ id, name, email });
+      return await userModel.create({ _id: id, name, email });
     }
   }
 
   async updateUser(id, name) {
-    return await userModel.update(
+    await userModel.update(
       { name: name },
       {
         where: {
-          id: id,
+          _id: id,
         },
       }
     );
+    return await userModel.findOne({
+      where: {
+        _id: id,
+      },
+    });
   }
 
   async deleteUser(id) {
-    let user = await userModel.destroy({
+    let user = await userModel.findOne({
       where: {
-        id: id,
+        _id: id,
       },
     });
     if (user) {
+      await userModel.destroy({
+        where: {
+          _id: id,
+        },
+      });
       return user;
     } else {
       throw new Error("User with the given ID does not exist");
