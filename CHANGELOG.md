@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.5...v1.8.0) (2021-06-11)
+
+
+### Features
+
+* pagination addded for user's tasks. ([49819c0](https://github.com/shariq-carbonteq/ToDoApp/commit/49819c065d966f9ffade92175765d5a0bc11c7ba))
+
 ### [1.7.5](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.7.4...v1.7.5) (2021-06-11)
 
 
