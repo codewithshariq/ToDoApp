@@ -10,6 +10,9 @@ class AuthService {
     });
     return accessToken;
   }
+  verifyToken(accessToken) {
+    return jwt.verify(accessToken, jwtConfig.ACCESS_TOKEN_SECRET);
+  }
 }
 
 module.exports = AuthService;
