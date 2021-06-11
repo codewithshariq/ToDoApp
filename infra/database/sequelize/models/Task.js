@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../createConnection");
+const User = require("./User");
 
 class Task extends Model {}
 
@@ -15,6 +16,10 @@ Task.init(
       type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
     },
   },
   { sequelize, modelName: "Task" }

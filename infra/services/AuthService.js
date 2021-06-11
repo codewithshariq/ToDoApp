@@ -6,7 +6,7 @@ class AuthService {
     let payload = { userId, name, email };
     let accessToken = jwt.sign(payload, jwtConfig.ACCESS_TOKEN_SECRET, {
       algorithm: "HS256",
-      expiresIn: jwtConfig.ACCESS_TOKEN_LIFE,
+      expiresIn: parseInt(jwtConfig.ACCESS_TOKEN_LIFE),
     });
     return accessToken;
   }

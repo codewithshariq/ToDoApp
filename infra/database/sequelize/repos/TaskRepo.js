@@ -1,35 +1,60 @@
 const taskModel = require("../models/Task");
 
 class TaskRepository {
-  static async getTask({ id }) {
-    return await taskModel.findAll({
+  async getTask(id) {
+    let task = await taskModel.findOne({
       where: {
-        taskId: id,
+        _id: id,
       },
     });
+    if (task) {
+      return task;
+    } else {
+      throw new Error("Task with the given ID does not exist");
+    }
   }
-  static async createTask({ name }) {
-    await taskModel.sync();
-    return await taskModel.create({
+
+  async createTask({ name, id, userId }) {
+    //userId will be addded as foreign key
+    let task = await taskModel.create({
       name,
+      _id: id,
+      userId: userId,
     });
   }
-  static async updateTask({ id, name, completed }) {
-    return await taskModel.update(
-      { name, completed },
+
+  async updateTask(id, completed) {
+    await taskModel.update(
+      { completed: completed },
       {
         where: {
-          taskId: id,
+          _id: id,
         },
       }
     );
-  }
-  static async deleteTask({ id }) {
-    return await taskModel.destroy({
+    return await taskModel.findOne({
       where: {
-        taskId: id,
+        _id: id,
       },
     });
+  }
+
+  async deleteTask(id) {
+    let task = await taskModel.findOne({
+      where: {
+        _id: id,
+      },
+    });
+    if (task) {
+      await taskModel.destroy({
+        where: {
+          _id: id,
+        },
+      });
+      return task;
+    } else {
+      throw new Error("Task with the given ID does not exist");
+    }
   }
 }
 
