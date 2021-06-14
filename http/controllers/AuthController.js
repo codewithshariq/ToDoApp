@@ -1,4 +1,4 @@
-const { db } = require("../../config");
+const { serverConfig } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
 const { UserService } = require("../../application");
 const GoogleAuthService = require("../../infra/services/GoogleAuthService");
@@ -6,7 +6,7 @@ const AuthService = require("../../infra/services/AuthService");
 
 class AuthController {
   constructor() {
-    this.userRepo = UserFactory.getRepo(db);
+    this.userRepo = UserFactory.getRepo(serverConfig.db);
     this.userService = new UserService(this.userRepo);
     this.googleAuthService = new GoogleAuthService();
     this.authService = new AuthService();

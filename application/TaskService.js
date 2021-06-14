@@ -1,6 +1,5 @@
-const Task = require("../domain/Task");
+const Task = require("../");
 const { v4: uuidv4 } = require("uuid");
-const PaginationService = require("./Pagination");
 
 class TaskService {
   constructor(taskRepo) {
@@ -9,16 +8,11 @@ class TaskService {
 
   async getTask(id) {
     let task = await this.taskRepo.getTask(id);
-    let { name, _id: taskId, userId, completed: taskStatus } = task;
-    task = Task.create(name, taskId, userId, taskStatus);
-    return task;
+    return Task.create(task);
   }
 
   async getTasks(userId, page, limit) {
-    let tasks = await this.taskRepo.getTasks(userId);
-    const paginationService = new PaginationService(page, limit);
-    tasks = paginationService.paginate(tasks);
-    return tasks;
+    return await this.taskRepo.getTasks(userId, page, limit);
   }
 
   async createTask(name, userId) {

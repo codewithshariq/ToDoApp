@@ -1,10 +1,10 @@
-const { db } = require("../../config");
+const { serverConfig } = require("../../config");
 const TaskFactory = require("../../infra/database/factories/TaskFactory");
 const { TaskService } = require("../../application");
 
 class TaskController {
   constructor() {
-    this.taskRepo = TaskFactory.getRepo(db);
+    this.taskRepo = TaskFactory.getRepo(serverConfig.db);
     this.taskService = new TaskService(this.taskRepo);
   }
 

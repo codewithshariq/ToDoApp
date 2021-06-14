@@ -1,10 +1,11 @@
 const userModel = require("../models/user");
+const User = require("../../../../domain/User");
 
 class UserRepo {
   async getUserByEmail(email) {
     let user = await userModel.findOne({ email: email }).exec();
     if (user) {
-      return user;
+      return User.create(user);
     } else {
       let err = new Error();
       err.name = "unregistered_user";
@@ -12,38 +13,34 @@ class UserRepo {
       throw err;
     }
   }
+
   async getUserById(id) {
     let user = await userModel.findById(id).exec();
     if (user) {
-      return user;
+      return User.create(user._id, user.name, user.email);
     } else {
       throw new Error("User with the given ID does not exist");
     }
   }
-  async createUser(id, name, email) {
-    let user = await userModel.findOne({ email: email }).exec();
-    if (user) {
+
+  async createUser(user) {
+    let registeredUser = await userModel.findOne({ email: user.email }).exec();
+    if (registeredUser) {
       throw new Error("User already registered");
     } else {
-      return await userModel.create({ _id: id, name, email });
+      await userModel.create(user);
+      return true;
     }
   }
-  async updateUser(id, name) {
-    let user = await userModel.findById(id).exec();
-    if (user) {
-      user.name = name;
-      return await user.save();
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+
+  async updateUser(user) {
+    await userModel.findByIdAndUpdate(user.id, user).exec();
+    return true;
   }
-  async deleteUser(id) {
-    let user = await userModel.findByIdAndDelete(id).exec();
-    if (user) {
-      return user;
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+
+  async deleteUser(user) {
+    await userModel.findByIdAndDelete(id).exec();
+    return true;
   }
 }
 

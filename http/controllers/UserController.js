@@ -1,11 +1,12 @@
-const { db } = require("../../config");
+const { serverConfig } = require("../../config");
 const UserFactory = require("../../infra/database/factories/UserFactory");
 const { UserService } = require("../../application");
 const GoogleAuthService = require("../../infra/services/GoogleAuthService");
+const handleException = require("../utils/exceptionHandler");
 
 class UserController {
   constructor() {
-    this.userRepo = UserFactory.getRepo(db);
+    this.userRepo = UserFactory.getRepo(serverConfig.db);
     this.userService = new UserService(this.userRepo);
     this.authApi = new GoogleAuthService();
   }
@@ -15,8 +16,9 @@ class UserController {
     try {
       let result = await this.userService.createUser(name, email);
       res.status(200).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
+    } catch (err) {
+      // res.status(400).send(error.message);
+      handleException(err);
     }
   }
 

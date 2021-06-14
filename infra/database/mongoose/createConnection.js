@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
-const dbConfig = require("../../../config/mongo");
+const { dbConfig } = require("../../../config");
+const log = require("../../services/Logger");
 
 const connectToDb = () => {
   mongoose
-    .connect(dbConfig.URI, {
+    .connect(dbConfig.mongo.URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-    .then(() => {})
+    .then(() => {
+      log.info("mongoDB database connection is successfully established.");
+    })
     .catch((err) => {
+      log.error(err.message);
       process.exit(1);
     });
 };

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const jwtConfig = require("../../config/jwt");
+const { jwtConfig } = require("../../config");
 
 class AuthService {
   createToken(userId, name, email) {

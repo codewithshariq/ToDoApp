@@ -1,4 +1,5 @@
 const taskModel = require("../models/task");
+const PaginationService = require("../../../../domain/utils/Pagination");
 
 class TaskRepo {
   async getTask(id) {
@@ -10,8 +11,10 @@ class TaskRepo {
     }
   }
 
-  async getTasks(userId) {
-    return await taskModel.find({ userId: userId });
+  async getTasks(userId, page, limit) {
+    let tasks = await taskModel.find({ userId: userId });
+    const paginationService = new PaginationService(page, limit);
+    return paginationService.paginate(tasks);
   }
 
   async createTask({ name, id, userId }) {

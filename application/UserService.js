@@ -9,25 +9,28 @@ class UserService {
   getUserByEmail(email) {
     return this.userRepo.getUserByEmail(email);
   }
+
   getUserById(id) {
-    return this.userRepo.getUserByEmail(id);
+    return this.userRepo.getUserById(id);
   }
+
   async createUser(name, email) {
     let user = User.create(uuidv4(), name, email);
-    await this.userRepo.createUser(user.id, user.name, user.email);
-    return user;
+    let userCreated = await this.userRepo.createUser(user);
+    return userCreated;
   }
+
   async updateUser(id, name) {
-    let {
-      name: userName,
-      _id: userId,
-      email,
-    } = await this.userRepo.updateUser(id, name);
-    return User.create(userId, userName, email);
+    let user = await this.getUserById(id);
+    user.updateName(name);
+    let userUpdated = await this.userRepo.updateUser(user);
+    return userUpdated;
   }
+
   async deleteUser(id) {
-    let user = await this.userRepo.deleteUser(id);
-    return User.create(user._id, user.name, user.email);
+    let user = await this.getUserById(id);
+    let userDeleted = await this.userRepo.deleteUser(user);
+    return userDeleted;
   }
 }
 

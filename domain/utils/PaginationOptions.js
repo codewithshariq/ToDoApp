@@ -1,6 +1,5 @@
 class PaginationOptions {
   constructor(page, limit) {
-    console.log("this is page", limit);
     this.limit = limit == undefined ? 10 : limit;
     this.page = page == undefined ? 1 : page;
   }
