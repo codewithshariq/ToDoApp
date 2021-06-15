@@ -1,18 +1,21 @@
 const jwt = require("jsonwebtoken");
-const jwtConfig = require("../../config/jwt");
+const { jwtConfig } = require("../../config");
 
-class AuthService {
+class JwtAuthService {
   createToken(userId, name, email) {
-    let payload = { userId, name, email };
-    let accessToken = jwt.sign(payload, jwtConfig.ACCESS_TOKEN_SECRET, {
+    const payload = { userId, name, email };
+
+    const accessToken = jwt.sign(payload, jwtConfig.ACCESS_TOKEN_SECRET, {
       algorithm: "HS256",
       expiresIn: parseInt(jwtConfig.ACCESS_TOKEN_LIFE),
     });
+
     return accessToken;
   }
+
   verifyToken(accessToken) {
     return jwt.verify(accessToken, jwtConfig.ACCESS_TOKEN_SECRET);
   }
 }
 
-module.exports = AuthService;
+module.exports = JwtAuthService;

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.2...v1.9.3) (2021-06-15)
+
+
+### Bug Fixes
+
+* refactoring completed upyo phase 3 ([d522047](https://github.com/shariq-carbonteq/ToDoApp/commit/d52204725eab12aec168371a32ab73466c81d45e))
+
 ### [1.9.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.1...v1.9.2) (2021-06-11)
 
 

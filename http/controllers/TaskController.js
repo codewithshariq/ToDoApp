@@ -1,20 +1,22 @@
-const { db } = require("../../config");
+const { serverConfig } = require("../../config");
 const TaskFactory = require("../../infra/database/factories/TaskFactory");
 const { TaskService } = require("../../application");
+const handleError = require("../utils/exceptionHandler");
 
 class TaskController {
   constructor() {
-    this.taskRepo = TaskFactory.getRepo(db);
+    this.taskRepo = TaskFactory.getRepo(serverConfig.db);
     this.taskService = new TaskService(this.taskRepo);
   }
 
   async getTask(req, res) {
     const { id } = req.body;
+
     try {
-      let result = await this.taskService.getTask(id);
+      const result = await this.taskService.getTask(id);
       res.status(200).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
+    } catch (err) {
+      handleError(err, req, res);
     }
   }
 
@@ -22,46 +24,50 @@ class TaskController {
     const page = req.query.page;
     const limit = req.query.limit;
     const {
-      userDetails: { userId },
+      user: { userId },
     } = req.body;
+
     try {
-      let result = await this.taskService.getTasks(userId, page, limit);
+      const result = await this.taskService.getTasks(userId, page, limit);
       res.status(200).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
+    } catch (err) {
+      handleError(err, req, res);
     }
   }
 
   async createTask(req, res) {
     const {
       name,
-      userDetails: { userId },
+      user: { userId },
     } = req.body;
+
     try {
-      let result = await this.taskService.createTask(name, userId);
+      const result = await this.taskService.createTask(name, userId);
       res.status(200).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
+    } catch (err) {
+      handleError(err, req, res);
     }
   }
 
   async updateTask(req, res) {
-    const { task } = req.body;
+    const { id, completed } = req.body;
+
     try {
-      let result = await this.taskService.updateTask(task);
+      const result = await this.taskService.updateTask(id, completed);
       res.status(200).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
+    } catch (err) {
+      handleError(err, req, res);
     }
   }
 
   async deleteTask(req, res) {
     const { id } = req.body;
+
     try {
-      let result = await this.taskService.deleteTask(id);
+      const result = await this.taskService.deleteTask(id);
       res.status(200).send(result);
-    } catch (error) {
-      res.status(400).send(error.message);
+    } catch (err) {
+      handleError(err, req, res);
     }
   }
 }

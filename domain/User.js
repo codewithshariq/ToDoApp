@@ -1,12 +1,16 @@
 class User {
-  constructor(id, name, email) {
-    this.id = id;
+  constructor(_id, name, email) {
+    this._id = _id;
     this.name = name;
     this.email = email;
   }
 
-  static create(id, name, email) {
-    return new User(id, name, email);
+  updateName(name) {
+    this.name = name;
+  }
+
+  static create(_id, name, email) {
+    return new User(_id, name, email);
   }
 }
 

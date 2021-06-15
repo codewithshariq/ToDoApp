@@ -4,7 +4,7 @@ const AuthController = require("../controllers/AuthController");
 const authController = new AuthController();
 
 router.get("/getUrl", async (req, res) => {
-  authController.generateUrl(req, res);
+  authController.generateAuthUrl(req, res);
 });
 
 router.get("/google/callback", async (req, res) => {

@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../createConnection");
+const { sequelize } = require("../createConnection");
 
 class User extends Model {}
 
@@ -19,7 +19,5 @@ User.init(
   },
   { sequelize, modelName: "User" }
 );
-
-User.sync();
 
 module.exports = sequelize.models.User;
