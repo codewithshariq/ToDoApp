@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const { dbConfig } = require("../../../config");
-const log = require("../../services/Logger");
+const log = require("../../services/BunyanLogger");
 
 const connectToDb = () => {
   mongoose
     .connect(dbConfig.mongo.URI, {
       useNewUrlParser: true,
+      useCreateIndex: true,
       useUnifiedTopology: true,
     })
     .then(() => {

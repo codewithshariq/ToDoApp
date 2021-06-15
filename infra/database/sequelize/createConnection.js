@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 const { dbConfig } = require("../../../config");
-const log = require("../../services/Logger");
+const log = require("../../services/BunyanLogger");
 
 const sequelize = new Sequelize(
   dbConfig.sql.DB,
@@ -10,6 +10,7 @@ const sequelize = new Sequelize(
     host: dbConfig.sql.HOST,
     dialect: dbConfig.sql.DIALECT,
     operatorsAliases: 0,
+    logging: false,
   }
 );
 

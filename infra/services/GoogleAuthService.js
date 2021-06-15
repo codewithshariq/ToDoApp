@@ -18,7 +18,7 @@ class GoogleAuthService {
     });
   }
 
-  urlGoogle() {
+  googleAuthUrl() {
     const url = this.generateAuthUrl(this.auth);
     return url;
   }

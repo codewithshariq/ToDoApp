@@ -1,71 +1,59 @@
 const taskModel = require("../models/Task");
 const PaginationService = require("../../../../domain/utils/Pagination");
+const Task = require("../../../../domain/Task");
 
 class TaskRepository {
   async getTask(id) {
-    let task = await taskModel.findOne({
+    const task = await taskModel.findOne({
       where: {
         _id: id,
       },
     });
-    if (task) {
-      return task;
-    } else {
-      throw new Error("Task with the given ID does not exist");
-    }
+
+    return task
+      ? Task.create(task.name, task._id, task.userId, task.completed)
+      : false;
   }
 
   async getTasks(userId, page, limit) {
-    let tasks = await taskModel.findAll({
+    const tasks = await taskModel.findAll({
       where: {
         userId: userId,
       },
       order: [["createdAt", "ASC"]],
     });
+
+    if (tasks.length == 0) {
+      return false;
+    }
+
     const paginationService = new PaginationService(page, limit);
     return paginationService.paginate(tasks);
   }
 
-  async createTask({ name, id, userId }) {
-    let task = await taskModel.create({
-      name,
-      _id: id,
-      userId: userId,
-    });
+  async createTask(task) {
+    const createdTask = await taskModel.create(task);
+    return createdTask ? true : false;
   }
 
-  async updateTask(id, completed) {
-    await taskModel.update(
-      { completed: completed },
-      {
-        where: {
-          _id: id,
-        },
-      }
-    );
-    return await taskModel.findOne({
+  async updateTask(task) {
+    const updatedTask = await taskModel.update(task, {
       where: {
-        _id: id,
+        _id: task._id,
       },
     });
+
+    return updatedTask.length > 0 ? true : false;
   }
 
-  async deleteTask(id) {
-    let task = await taskModel.findOne({
+  async deleteTask(task) {
+    const deletedTask = await taskModel.findOne({
       where: {
-        _id: id,
+        _id: task._id,
       },
     });
-    if (task) {
-      await taskModel.destroy({
-        where: {
-          _id: id,
-        },
-      });
-      return task;
-    } else {
-      throw new Error("Task with the given ID does not exist");
-    }
+
+    return deletedTask > 0 ? true : false;
   }
 }
 

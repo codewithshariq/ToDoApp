@@ -1,79 +1,51 @@
 const userModel = require("../models/User");
+const User = require("../../../../domain/User");
 
 class UserRepo {
   async getUserByEmail(email) {
-    let user = await userModel.findOne({
+    const user = await userModel.findOne({
       where: {
         email: email,
       },
     });
-    if (user) {
-      return user;
-    } else {
-      let err = new Error();
-      err.name = "unregistered_user";
-      err.message = "User with the given email is not registered";
-      throw err;
-    }
+
+    return user ? User.create(user._id, user.name, user.email) : false;
   }
+
   async getUserById(id) {
-    let user = await userModel.findOne({
+    const user = await userModel.findOne({
       where: {
         _id: id,
       },
     });
-    if (user) {
-      return user;
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+
+    return user ? User.create(user._id, user.name, user.email) : false;
   }
 
-  async createUser(id, name, email) {
-    let user = await userModel.findOne({
-      where: {
-        email: email,
-      },
-    });
-    if (user) {
-      throw new Error("User already registered");
-    } else {
-      return await userModel.create({ _id: id, name, email });
-    }
+  async createUser(user) {
+    const createdUser = await userModel.create(user);
+
+    return createdUser ? true : false;
   }
 
-  async updateUser(id, name) {
-    await userModel.update(
-      { name: name },
-      {
-        where: {
-          _id: id,
-        },
-      }
-    );
-    return await userModel.findOne({
+  async updateUser(user) {
+    const updatedUser = await userModel.update(user, {
       where: {
-        _id: id,
+        _id: user._id,
       },
     });
+
+    return updatedUser.length > 0 ? true : false;
   }
 
-  async deleteUser(id) {
-    let user = await userModel.findOne({
+  async deleteUser(user) {
+    const deletedUser = await userModel.destroy({
       where: {
-        _id: id,
+        _id: user._id,
       },
     });
-    if (user) {
-      await userModel.destroy({
-        where: {
-          _id: id,
-        },
-      });
-      return user;
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+
+    return deletedUser > 0 ? true : false;
   }
 }
 

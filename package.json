@@ -23,7 +23,8 @@
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2",
     "sqlite3": "^5.0.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "standard-version": "^9.3.0"

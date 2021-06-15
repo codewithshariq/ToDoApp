@@ -6,6 +6,10 @@ class Task {
     this.userId = userId;
   }
 
+  updateStatus(completed) {
+    this.completed = completed;
+  }
+
   static create(name, _id, userId, completed = false) {
     return new Task(name, completed, _id, userId);
   }

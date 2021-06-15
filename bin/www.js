@@ -1,18 +1,18 @@
 require("dotenv").config();
 const { serverConfig } = require("../config");
-const mongo = require("../infra/database/mongoose/createConnection");
-const sql = require("../infra/database/sequelize/createConnection");
+const db = require("../infra/database");
 const app = require("../http/app");
+const log = require("../infra/services/BunyanLogger");
 
 const { program } = require("commander");
 program.version("0.0.1");
 program.command("start").action(() => {
-  //Initialize connection to mongoDB
-  mongo.connectToDb();
+  //initiating connection to database
+  db.connectToDb();
 
-  //Initialize connection to MYSQl database
-  sql.connectToDb();
-
-  app.listen(serverConfig.port);
+  //Statring server on given port
+  app.listen(serverConfig.port, () => {
+    log.info(`Server is listening on port:${serverConfig.port}`);
+  });
 });
 program.parse(process.argv);

@@ -3,44 +3,30 @@ const User = require("../../../../domain/User");
 
 class UserRepo {
   async getUserByEmail(email) {
-    let user = await userModel.findOne({ email: email }).exec();
-    if (user) {
-      return User.create(user);
-    } else {
-      let err = new Error();
-      err.name = "unregistered_user";
-      err.message = "User with the given email is not registered";
-      throw err;
-    }
+    const user = await userModel.findOne({ email: email }).exec();
+    return user ? User.create(user._id, user.name, user.email) : false;
   }
 
   async getUserById(id) {
-    let user = await userModel.findById(id).exec();
-    if (user) {
-      return User.create(user._id, user.name, user.email);
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+    const user = await userModel.findById(id).exec();
+    return user ? User.create(user._id, user.name, user.email) : false;
   }
 
   async createUser(user) {
-    let registeredUser = await userModel.findOne({ email: user.email }).exec();
-    if (registeredUser) {
-      throw new Error("User already registered");
-    } else {
-      await userModel.create(user);
-      return true;
-    }
+    const createdUser = await userModel.create(user);
+    return createdUser ? true : false;
   }
 
   async updateUser(user) {
-    await userModel.findByIdAndUpdate(user.id, user).exec();
-    return true;
+    const updatedUser = await userModel
+      .findByIdAndUpdate(user._id, user)
+      .exec();
+    return updatedUser ? true : false;
   }
 
   async deleteUser(user) {
-    await userModel.findByIdAndDelete(id).exec();
-    return true;
+    const deletedUser = await userModel.findByIdAndDelete(user._id).exec();
+    return deletedUser ? true : false;
   }
 }
 

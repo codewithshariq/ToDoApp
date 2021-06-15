@@ -1,8 +1,8 @@
-class httpError extends Error {
+class HttpError extends Error {
   constructor(code, message, ...params) {
     super(...params);
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, CustomError);
+      Error.captureStackTrace(this, HttpError);
     }
     this.name = "http";
     this.code = code;
@@ -10,4 +10,4 @@ class httpError extends Error {
   }
 }
 
-module.exports = CustomError;
+module.exports = HttpError;

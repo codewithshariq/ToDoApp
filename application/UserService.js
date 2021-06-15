@@ -1,36 +1,46 @@
 const User = require("../domain/User");
 const { v4: uuidv4 } = require("uuid");
+const HttpError = require("../http/exceptions/HttpError");
 
 class UserService {
   constructor(userRepo) {
     this.userRepo = userRepo;
   }
 
-  getUserByEmail(email) {
-    return this.userRepo.getUserByEmail(email);
+  async isUserRegistered(email) {
+    return await this.userRepo.getUserByEmail(email);
   }
 
-  getUserById(id) {
-    return this.userRepo.getUserById(id);
+  async getUserById(id) {
+    const user = await this.userRepo.getUserById(id);
+
+    if (!user) {
+      throw new HttpError(400, "User with the given id does not exist.");
+    }
+
+    return user;
   }
 
   async createUser(name, email) {
-    let user = User.create(uuidv4(), name, email);
-    let userCreated = await this.userRepo.createUser(user);
-    return userCreated;
+    const userExists = await this.isUserRegistered(email);
+
+    if (userExists) {
+      throw new HttpError(400, "User with the given id is already registered.");
+    }
+
+    const user = User.create(uuidv4(), name, email);
+    return await this.userRepo.createUser(user);
   }
 
   async updateUser(id, name) {
-    let user = await this.getUserById(id);
+    const user = await this.getUserById(id);
     user.updateName(name);
-    let userUpdated = await this.userRepo.updateUser(user);
-    return userUpdated;
+    return await this.userRepo.updateUser(user);
   }
 
   async deleteUser(id) {
-    let user = await this.getUserById(id);
-    let userDeleted = await this.userRepo.deleteUser(user);
-    return userDeleted;
+    const user = await this.getUserById(id);
+    return await this.userRepo.deleteUser(user);
   }
 }
 
