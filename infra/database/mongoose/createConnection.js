@@ -1,14 +1,19 @@
 const mongoose = require("mongoose");
-const dbConfig = require("../../../config/mongo");
+const { dbConfig } = require("../../../config");
+const log = require("../../services/BunyanLogger");
 
 const connectToDb = () => {
   mongoose
-    .connect(dbConfig.URI, {
+    .connect(dbConfig.mongo.URI, {
       useNewUrlParser: true,
+      useCreateIndex: true,
       useUnifiedTopology: true,
     })
-    .then(() => {})
+    .then(() => {
+      log.info("mongoDB database connection is successfully established.");
+    })
     .catch((err) => {
+      log.error(err.message);
       process.exit(1);
     });
 };

@@ -1,6 +1,11 @@
-const dev = {
-  db: process.env.DATABASE,
-  port: process.env.PORT,
-};
+const dbConfig = require("./db");
+const googleConfig = require("./google");
+const jwtConfig = require("./jwt");
+const serverConfig = require("./server");
 
-module.exports = dev;
+module.exports = {
+  dbConfig,
+  googleConfig,
+  jwtConfig,
+  serverConfig,
+};

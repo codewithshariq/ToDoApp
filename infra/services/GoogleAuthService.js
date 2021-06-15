@@ -1,5 +1,5 @@
 const { google } = require("googleapis");
-const googleConfig = require("../../config/google-api");
+const { googleConfig } = require("../../config");
 
 class GoogleAuthService {
   constructor() {
@@ -10,7 +10,7 @@ class GoogleAuthService {
     );
   }
 
-  getConnectionUrl(auth) {
+  generateAuthUrl(auth) {
     return auth.generateAuthUrl({
       access_type: "offline",
       prompt: "consent", // access type and approval prompt will force a new refresh token to be made each time signs in
@@ -18,8 +18,8 @@ class GoogleAuthService {
     });
   }
 
-  urlGoogle() {
-    const url = this.getConnectionUrl(this.auth);
+  googleAuthUrl() {
+    const url = this.generateAuthUrl(this.auth);
     return url;
   }
 

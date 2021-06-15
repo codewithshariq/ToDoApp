@@ -1,49 +1,32 @@
 const userModel = require("../models/user");
+const User = require("../../../../domain/User");
 
 class UserRepo {
   async getUserByEmail(email) {
-    let user = await userModel.findOne({ email: email }).exec();
-    if (user) {
-      return user;
-    } else {
-      let err = new Error();
-      err.name = "unregistered_user";
-      err.message = "User with the given email is not registered";
-      throw err;
-    }
+    const user = await userModel.findOne({ email: email }).exec();
+    return user ? User.create(user._id, user.name, user.email) : false;
   }
+
   async getUserById(id) {
-    let user = await userModel.findById(id).exec();
-    if (user) {
-      return user;
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+    const user = await userModel.findById(id).exec();
+    return user ? User.create(user._id, user.name, user.email) : false;
   }
-  async createUser(id, name, email) {
-    let user = await userModel.findOne({ email: email }).exec();
-    if (user) {
-      throw new Error("User already registered");
-    } else {
-      return await userModel.create({ _id: id, name, email });
-    }
+
+  async createUser(user) {
+    const createdUser = await userModel.create(user);
+    return createdUser ? true : false;
   }
-  async updateUser(id, name) {
-    let user = await userModel.findById(id).exec();
-    if (user) {
-      user.name = name;
-      return await user.save();
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+
+  async updateUser(user) {
+    const updatedUser = await userModel
+      .findByIdAndUpdate(user._id, user)
+      .exec();
+    return updatedUser ? true : false;
   }
-  async deleteUser(id) {
-    let user = await userModel.findByIdAndDelete(id).exec();
-    if (user) {
-      return user;
-    } else {
-      throw new Error("User with the given ID does not exist");
-    }
+
+  async deleteUser(user) {
+    const deletedUser = await userModel.findByIdAndDelete(user._id).exec();
+    return deletedUser ? true : false;
   }
 }
 
