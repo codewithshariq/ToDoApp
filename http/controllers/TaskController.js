@@ -23,9 +23,12 @@ class TaskController {
   async getTasks(req, res) {
     const page = req.query.page;
     const limit = req.query.limit;
-    const {
-      user: { userId },
-    } = req.body;
+
+    // const {
+    //   user: { userId },
+    // } = req.body;
+
+    const { _id: userId } = req.user;
 
     try {
       const result = await this.taskService.getTasks(userId, page, limit);
@@ -36,10 +39,13 @@ class TaskController {
   }
 
   async createTask(req, res) {
-    const {
-      name,
-      user: { userId },
-    } = req.body;
+    // const {
+    //   name,
+    //   user: { userId },
+    // } = req.body;
+
+    const { name } = req.body;
+    const { _id: userId } = req.user;
 
     try {
       const result = await this.taskService.createTask(name, userId);
