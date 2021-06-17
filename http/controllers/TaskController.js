@@ -2,11 +2,11 @@ const { serverConfig } = require("../../config");
 const TaskFactory = require("../../infra/database/factories/TaskFactory");
 const handleError = require("../utils/exceptionHandler");
 
-const CreateTaskCommand = require("../../application/usecases/task/createTask/command");
-const GetTaskCommand = require("../../application/usecases/task/getTask/command");
-const GetTasksCommand = require("../../application/usecases/task/getTasks/command");
-const UpdateTaskCommand = require("../../application/usecases/task/updateTask/command");
-const DeleteTaskCommand = require("../../application/usecases/task/deleteTask/command");
+const CreateTaskCommand = require("../../application/usecases/task/createTask/CreateTaskCommand");
+const GetTaskCommand = require("../../application/usecases/task/getTask/GetTaskCommand");
+const GetTasksCommand = require("../../application/usecases/task/getTasks/GetTasksCommand");
+const UpdateTaskCommand = require("../../application/usecases/task/updateTask/UpdateTaskCommand");
+const DeleteTaskCommand = require("../../application/usecases/task/deleteTask/DeleteTaskCommand");
 
 const TaskCommandBus = require("../../infra/utils/command-bus");
 
