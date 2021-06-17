@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.3...v1.10.0) (2021-06-17)
+
+
+### Features
+
+* command bus pattern implemented for Task ([3da70ff](https://github.com/shariq-carbonteq/ToDoApp/commit/3da70ff6573b9d301f5df67162c5e40079f7f9a2))
+* passport.js used for authentication and created docker image of the web app ([0bf513d](https://github.com/shariq-carbonteq/ToDoApp/commit/0bf513ddf059cc8cea8cda475861be9dab04048c))
+
+
+### Bug Fixes
+
+* implementing command bus logic ([d3075d5](https://github.com/shariq-carbonteq/ToDoApp/commit/d3075d5b92a5f1af0800aa9dca5513b8adcf9d96))
+
 ### [1.9.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.2...v1.9.3) (2021-06-15)
 
 
