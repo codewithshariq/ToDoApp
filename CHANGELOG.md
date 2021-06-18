@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.3...v1.10.0) (2021-06-18)
+
+
+### Features
+
+* passport.js used for authentication and created docker image of the web app ([0bf513d](https://github.com/shariq-carbonteq/ToDoApp/commit/0bf513ddf059cc8cea8cda475861be9dab04048c))
+
 ### [1.9.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.2...v1.9.3) (2021-06-15)
 
 
