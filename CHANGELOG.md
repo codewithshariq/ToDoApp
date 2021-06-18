@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.10.1...v1.10.2) (2021-06-18)
+
+
+### Bug Fixes
+
+* made app folder in the root directory ([75e8e7b](https://github.com/shariq-carbonteq/ToDoApp/commit/75e8e7b525fd875a7b5e4c1cf9f27fb18059968b))
+* removed merge conflicts ([ce4ef6a](https://github.com/shariq-carbonteq/ToDoApp/commit/ce4ef6a492cacf3f7788ed4975c234b6ff7a471e))
+
 ### [1.10.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.10.0...v1.10.1) (2021-06-17)
 
 ### Bug Fixes
