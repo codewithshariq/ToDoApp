@@ -1,10 +1,6 @@
 {
   "name": "ToDoApp",
-<<<<<<< HEAD
   "version": "1.10.1",
-=======
-  "version": "1.10.0",
->>>>>>> fd4b6b4a5a5b53f50734022bf6c16724c52b6761
   "description": "",
   "main": "./bin/www",
   "scripts": {
