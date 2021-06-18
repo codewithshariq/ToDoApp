@@ -1,8 +1,8 @@
 require("dotenv").config();
-const { serverConfig } = require("../config");
-const db = require("../infra/database");
-const app = require("../http/app");
-const log = require("../infra/services/BunyanLogger");
+const { serverConfig } = require("../app/config");
+const db = require("../app/infra/database");
+const app = require("../app/http/app");
+const log = require("../app/infra/services/BunyanLogger");
 
 const { program } = require("commander");
 program.version("0.0.1");
