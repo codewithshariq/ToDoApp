@@ -1,10 +1,14 @@
 {
   "name": "ToDoApp",
+<<<<<<< HEAD
   "version": "1.10.1",
+=======
+  "version": "1.10.0",
+>>>>>>> fd4b6b4a5a5b53f50734022bf6c16724c52b6761
   "description": "",
   "main": "./bin/www",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha './tests/**/*.spec.js'",
     "start": "node ./bin/www",
     "release": "standard-version"
   },
@@ -30,6 +34,10 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^9.0.0",
+    "sinon": "^11.1.1",
     "standard-version": "^9.3.0"
   }
 }

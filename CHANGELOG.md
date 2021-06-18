@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<<<<<<< HEAD
 ### [1.10.1](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.10.0...v1.10.1) (2021-06-17)
 
 
@@ -10,10 +11,14 @@ All notable changes to this project will be documented in this file. See [standa
 * fixed folder structure for usecases ([a5706c4](https://github.com/shariq-carbonteq/ToDoApp/commit/a5706c48e37e60e914997da122ac7b4e1c19375c))
 
 ## [1.10.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.3...v1.10.0) (2021-06-17)
+=======
+## [1.10.0](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.3...v1.10.0) (2021-06-18)
+>>>>>>> fd4b6b4a5a5b53f50734022bf6c16724c52b6761
 
 
 ### Features
 
+<<<<<<< HEAD
 * command bus pattern implemented for Task ([3da70ff](https://github.com/shariq-carbonteq/ToDoApp/commit/3da70ff6573b9d301f5df67162c5e40079f7f9a2))
 * passport.js used for authentication and created docker image of the web app ([0bf513d](https://github.com/shariq-carbonteq/ToDoApp/commit/0bf513ddf059cc8cea8cda475861be9dab04048c))
 
@@ -22,6 +27,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 * implementing command bus logic ([d3075d5](https://github.com/shariq-carbonteq/ToDoApp/commit/d3075d5b92a5f1af0800aa9dca5513b8adcf9d96))
 
+=======
+* passport.js used for authentication and created docker image of the web app ([0bf513d](https://github.com/shariq-carbonteq/ToDoApp/commit/0bf513ddf059cc8cea8cda475861be9dab04048c))
+
+>>>>>>> fd4b6b4a5a5b53f50734022bf6c16724c52b6761
 ### [1.9.3](https://github.com/shariq-carbonteq/ToDoApp/compare/v1.9.2...v1.9.3) (2021-06-15)
 
 
